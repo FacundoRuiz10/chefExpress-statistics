@@ -71,7 +71,7 @@ public class UserStory3 {
     private List<Recommendation> mockRecommendations(List<Recipe> recipes) {
         return recipes
                 .stream()
-                .map(recipe -> new Recommendation(recipe)).collect(Collectors.toList());
+                .map(recipe -> new Recommendation("linka",recipe)).collect(Collectors.toList());
     }
 
     private List<Recipe> mockRecipes(List<Integer> ids) {
