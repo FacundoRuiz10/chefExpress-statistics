@@ -13,6 +13,11 @@ public class RecommendationProvider implements PropertyChangeListener {
 
     private List<Recommendation> historicRecommendations;
 
+    public RecommendationProvider()
+    {
+        this.historicRecommendations =  new ArrayList<>();
+    }
+
     public List<Recommendation> getHistoricRecommendations()  {
         return historicRecommendations;
     }
