@@ -1,14 +1,15 @@
 package factories;
 
-import core.ChefExpress;
 import core.RecommendationLogger;
+import core.VideoRecipeRecommendator;
 import providers.RecommendationProvider;
 
-public class RecommendationLoggerFactory {
-
-    public RecommendationLogger createRecommendationLogger(ChefExpress chefExpress) {
+public class RecommendationLoggerFactory
+{
+    public RecommendationLogger createRecommendationLogger(VideoRecipeRecommendator recommender)
+    {
         RecommendationProvider provider = new RecommendationProvider();
-        chefExpress.attach(provider);
+        recommender.attach(provider);
         return new RecommendationLogger(provider);
     }
 }
