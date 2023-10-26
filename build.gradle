@@ -21,7 +21,7 @@ repositories {
 dependencies {
     testImplementation ('org.junit.jupiter:junit-jupiter:5.9.3')
     testImplementation ('org.mockito:mockito-core:3.12.4')
-    implementation 'com.github.aagusvidal:chefExpress-core:7c8b61e434'
+    implementation 'com.github.aagusvidal:chefExpress-core:071cd7dc88'
 }
 
 test {
