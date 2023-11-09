@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ea640c3-84c3-4743-a06c-dcc42f4b3f3e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/HistoricalRecipesCounter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/factories/HistoricalRecipesCounterFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/factories/RecommendationLoggerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/factories/RecommendationLoggerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/providers/RecommendationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/providers/RecommendationProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/RecommendationLogger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/factories/RecommendationLoggerFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/providers/RecommendationProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IT1/UserStory3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/IT1/UserStory3.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,11 +70,56 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/Recursiva/Documents/chefExpress-statistics"
   }
 }]]></component>
-  <component name="RunManager" selected="Gradle.chefExpressStatistics [test]">
+  <component name="RunManager" selected="Gradle.Tests in 'chefExpressStatistics'">
+    <configuration name="Tests in 'IT1'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;IT1.*&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in 'chefExpressStatistics'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="UserStory3" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -151,6 +200,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Tests in 'chefExpressStatistics'" />
+        <item itemvalue="Gradle.Tests in 'IT1'" />
         <item itemvalue="Gradle.chefExpressStatistics [test]" />
         <item itemvalue="Gradle.chefExpressStatistics [build]" />
         <item itemvalue="Gradle.UserStory3" />
