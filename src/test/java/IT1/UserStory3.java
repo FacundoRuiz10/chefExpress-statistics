@@ -44,12 +44,11 @@ public class UserStory3 {
 
     @Test
     public void ca2MultiplesRecetasMasRecomendadas() throws InterruptedException {
-       /* List<Integer> recipeIds = Arrays.asList(1, 2);
+       List<Integer> recipeIds = Arrays.asList(1, 2);
         when(this.chefExpress.recommend()).thenReturn(mockRecipes(recipeIds));
         this.chefExpress.recommend();
         Map<Recipe, Integer> actualRecipes = mockRecommendations(mockRecipes(recipeIds));
         assertTrue(this.areMapsEqual(historicalRecipesCounter.getHistoricRecipes(), actualRecipes));
-    */
     }
     @Test
     public void ca3UnicaRecetaMasRecomendada() {
