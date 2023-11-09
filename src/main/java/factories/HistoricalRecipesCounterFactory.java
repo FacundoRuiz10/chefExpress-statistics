@@ -5,7 +5,7 @@ import core.HistoricalRecipesCounter;
 
 public class HistoricalRecipesCounterFactory
 {
-    public HistoricalRecipesCounter createRecommendationLogger(ChefExpress recommender)
+    public HistoricalRecipesCounter createHistoricalRecipesCounter(ChefExpress recommender)
     {
         HistoricalRecipesCounter historicalRecipesCounter = new HistoricalRecipesCounter();
         recommender.attach(historicalRecipesCounter);
