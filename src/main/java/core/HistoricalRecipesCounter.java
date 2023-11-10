@@ -12,9 +12,10 @@ public class HistoricalRecipesCounter implements PropertyChangeListener {
 
     private Map<Recipe, Integer> historicRecipes;
 
-    public HistoricalRecipesCounter()
+    public HistoricalRecipesCounter(ChefExpress chefExpress)
     {
         this.historicRecipes =  new HashMap<>();
+        chefExpress.attach(this);
     }
 
     @Override
@@ -30,7 +31,6 @@ public class HistoricalRecipesCounter implements PropertyChangeListener {
                 quantity = historicRecipes.get(recipe);
             }
             historicRecipes.put(recipe, quantity + 1);
-            System.out.print(historicRecipes);
         }
     }
 

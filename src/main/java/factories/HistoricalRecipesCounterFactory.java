@@ -7,8 +7,7 @@ public class HistoricalRecipesCounterFactory
 {
     public HistoricalRecipesCounter createHistoricalRecipesCounter(ChefExpress recommender)
     {
-        HistoricalRecipesCounter historicalRecipesCounter = new HistoricalRecipesCounter();
-        recommender.attach(historicalRecipesCounter);
+        HistoricalRecipesCounter historicalRecipesCounter = new HistoricalRecipesCounter(recommender);
         return historicalRecipesCounter;
     }
 }
