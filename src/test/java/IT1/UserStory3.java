@@ -1,8 +1,13 @@
 package IT1;
 
 import core.ChefExpress;
+import core.RecipesUpdater;
 import entities.Recipe;
+import finders.LocalRecipesFactory;
+import finders.RecipesProvider;
 import interfaces.RecipeScorer;
+import interfaces.RecipesFactory;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import core.HistoricalRecipesCounter;
@@ -17,6 +22,8 @@ public class UserStory3
 {
     private HistoricalRecipesCounter historicalRecipesCounter;
     private RecipeScorer scorerMock;
+
+    private RecipesProvider recipesProvider;
     private ChefExpress chefExpress;
     private List<Recipe> recipes;
 
@@ -27,8 +34,8 @@ public class UserStory3
         recipes = mockRecipes(recipeIds);
 
         scorerMock = mock(RecipeScorer.class);
-
-        chefExpress = new ChefExpress(new HashSet<>(recipes), scorerMock, new HashMap<>());
+        recipesProvider = this.createRecipesProvider(recipes);
+        chefExpress = new ChefExpress(recipesProvider, scorerMock, new HashMap<>());
         historicalRecipesCounter = new HistoricalRecipesCounter(chefExpress);
     }
 
@@ -41,44 +48,35 @@ public class UserStory3
     }
 
     @Test
-    public void ca1SinRecetasMasRecomendadas()
+    @Description("Sin recetas recomendadas")
+    public void ca1SinRecetasRecomendadas()
     {
         Map<Recipe, Integer> scorerResults = Map.of(recipes.get(0),0, recipes.get(1), 0);
         this.setScorerResult(scorerResults);
-
         this.chefExpress.recommend();
-
         assertTrue(historicalRecipesCounter.getHistoricRecipes().isEmpty());
     }
 
     @Test
-    public void ca2MultiplesRecetasMasRecomendadas()
+    @Description("Recetas recomendadas múltiples veces")
+    public void ca2RecetasRecomendadasMultiplesVeces()
     {
-        Map<Recipe, Integer> scorerResults = Map.of(recipes.get(0),10, recipes.get(1), 10);
-        this.setScorerResult(scorerResults);
 
+        this.mockScorerResults(10, 10);
+        this.chefExpress.recommend();
+        this.mockScorerResults(10, 0);
         this.chefExpress.recommend();
 
-        scorerResults = Map.of(recipes.get(0),10, recipes.get(1), 0);
-        this.setScorerResult(scorerResults);
-
-        this.chefExpress.recommend();
-
-        assert historicalRecipesCounter.getHistoricRecipes().containsKey(recipes.get(0));
-        assert historicalRecipesCounter.getHistoricRecipes().containsKey(recipes.get(1));
-
-        assert historicalRecipesCounter.getHistoricRecipes().get(recipes.get(0)) == 2;
-        assert historicalRecipesCounter.getHistoricRecipes().get(recipes.get(1)) == 1;
+        assert historicalRecipesCounter.getHistoricRecipes().containsKey(recipes.get(0)) && historicalRecipesCounter.getHistoricRecipes().containsKey(recipes.get(1));
+        assert historicalRecipesCounter.getHistoricRecipes().get(recipes.get(0)) == 2  && historicalRecipesCounter.getHistoricRecipes().get(recipes.get(1)) == 1;
     }
 
     @Test
-    public void ca3UnicaRecetaMasRecomendada()
+    @Description("Receta recomendada una única vez")
+    public void ca3RecetaRecomendadaUnaUnicaVez()
     {
-        Map<Recipe, Integer> scorerResults = Map.of(recipes.get(0),10, recipes.get(1), 0);
-        this.setScorerResult(scorerResults);
-
+        this.mockScorerResults(10, 0);
         this.chefExpress.recommend();
-
         assert historicalRecipesCounter.getHistoricRecipes().containsKey(recipes.get(0));
         assert historicalRecipesCounter.getHistoricRecipes().get(recipes.get(0)) == 1;
     }
@@ -89,5 +87,19 @@ public class UserStory3
         return ids.stream()
                 .map(recipeId -> new Recipe(recipeId, "recipe " + recipeId, new HashMap<>()))
                 .collect(Collectors.toList());
+    }
+
+    private void mockScorerResults(Integer scoreRecipe1, Integer scoreRecipe2) {
+        Map<Recipe, Integer> scorerResults = Map.of(recipes.get(0),scoreRecipe1, recipes.get(1), scoreRecipe2);
+        this.setScorerResult(scorerResults);
+    }
+
+    private RecipesProvider createRecipesProvider(List<Recipe> recipesList) {
+        RecipesFactory recipesLocalFinder = new LocalRecipesFactory();
+        String recipesPath =  "";
+        HashSet<Recipe> recipes = new HashSet<>(recipesList);
+        RecipesUpdater recipesUpdater = new RecipesUpdater(recipesLocalFinder,  List.of(recipesPath.split(",")),  recipes);
+        RecipesProvider recipesProvider = new RecipesProvider(recipes, recipesUpdater);
+        return recipesProvider;
     }
 }
