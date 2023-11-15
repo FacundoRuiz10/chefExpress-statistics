@@ -23,7 +23,7 @@ dependencies {
 
     testImplementation ('org.junit.jupiter:junit-jupiter:5.9.3')
     testImplementation ('org.mockito:mockito-core:3.12.4')
-    implementation 'com.github.aagusvidal:chefExpress-core:982df44f03'
+    implementation 'com.github.aagusvidal:chefExpress-core:423279eba0'
 }
 
 test {
